@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>防抖函数</title>
+</head>
+<body>
+	<button id="btn">点击</button>
+<script>
+	//500毫秒内多次触发只会执行一次，
+	function de(){
+		let timer;
+
+		return function(){
+			if(timer) clearTimeout(timer);//如果500毫秒内又一次触发，则会重新计算时间
+			timer = setTimeout(() => {
+			  console.log('dddd')
+			}, 500)
+		}
+	}
+	document.querySelector('#btn').addEventListener('click',de())
+	
+	let arr=[8,1,1,2]
+	let b=[]
+	for(let i=0;i<arr.length;i++){
+		b[arr[i]]=1
+	}
+
+let res=[]
+	for(let i=0;i<b.length;i++){
+		if(b[i]==1){
+			res.push(i)
+		}
+	}
+	console.log(res);
+</script>
+</body>
+</html>
